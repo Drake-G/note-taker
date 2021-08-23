@@ -4,7 +4,11 @@ module.exports = (app) => {
     //gets the notes
     app.get('/api/notes', (req, res) => res.json(notes))
 
-
+    //get one note by the ID
+    app.get('/api/notes/:id', (req, res) => {
+        const singleNote = findById(req.params.findById, notes);
+        res.json(singleNote)
+    })
 
     //adds new json objects to notes 
     app.post('/api/notes', (req, res) => {
